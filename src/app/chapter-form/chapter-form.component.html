@@ -1,0 +1,68 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #chapterForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="chapter.name" class="form-control" id="name" name="name" placeholder="Enter chapter name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="whyFounded">Why Founded</label>
+        <input type="text" [(ngModel)]="chapter.whyFounded" class="form-control" id="whyFounded" name="whyFounded" placeholder="Enter why founded" required>
+        <div class="input-group-append">
+            <button type="button" class="btn btn-warning" (click)="fetchRandomWhyFounded()">Randomize</button>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="whenFounded">When Founded</label>
+        <input type="text" [(ngModel)]="chapter.whenFounded" class="form-control" id="whenFounded" name="whenFounded" placeholder="Enter when founded" required>
+        <div class="input-group-append">
+            <button type="button" class="btn btn-warning" (click)="fetchRandomWhenFounded()">Randomize</button>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="progenitor">Progenitor</label>
+        <input type="text" [(ngModel)]="chapter.progenitor" class="form-control" id="progenitor" name="progenitor" placeholder="Enter progenitor" required>
+        <div class="input-group-append">
+            <button type="button" class="btn btn-warning" (click)="fetchRandomProgenitor()">Randomize</button>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="gsPurity">Gene Seed Purity</label>
+        <input type="text" [(ngModel)]="chapter.gsPurity" class="form-control" id="gsPurity" name="gsPurity" placeholder="Enter Gene Seed Purity" required>
+        <div class="input-group-append">
+            <button type="button" class="btn btn-warning" (click)="fetchRandomGsPurity()">Randomize</button>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="demeanour">Demeanour</label>
+        <input type="text" [(ngModel)]="chapter.demeanour" class="form-control" id="demeanour" name="demeanour" placeholder="Enter Demeanour" required>
+        <div class="input-group-append">
+            <button type="button" class="btn btn-warning" (click)="fetchRandomDemeanour()">Randomize</button>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="figureOfLegend">Figure of Legend</label>
+        <input type="text" [(ngModel)]="chapter.figureOfLegend" class="form-control" id="figureOfLegend" name="figureOfLegend" placeholder="Enter Figure of Legend" required>
+        <div class="input-group-append">
+            <button type="button" class="btn btn-warning" (click)="fetchRandomFigure()">Randomize</button>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="deedsOfLegend">Deeds of Legend</label>
+        <input type="text" [(ngModel)]="chapter.deedsOfLegend" class="form-control" id="deedsOfLegend" name="deedsOfLegend" placeholder="Enter Deeds of Legend" required>
+        <div class="input-group-append">
+            <button type="button" class="btn btn-warning" (click)="fetchRandomDeeds()">Randomize</button>
+          </div>
+      </div>
+
+      <button type="submit" [disabled]="!chapterForm.form.valid" class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+export class Planet {
+    id!:string;
+    name!:string;
+    segmentum!:string;
+    pClass!:string;
+    techLevel!:string;
+    starSize!:string;
+    planetSize!:string;
+    axialTilt!:string;
+    dayLength!:string;
+    yearLength!:string;
+    numSatellites!:string;
+    gravity!:string;
+    atmosphere!:string;
+    hydrosphere!:string;
+    temperature!:string;
+    terrains!:string;
+    population!:string;
+    society!:string;
+    defences!:string;
+}

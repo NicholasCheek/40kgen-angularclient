@@ -1,0 +1,24 @@
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">whyFounded</th>
+            <th scope="col">whenFounded</th>
+            <th scope="col">Progenitor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let chapter of chapters">
+            <td>{{ chapter.id }}</td>
+            <td>{{ chapter.name }}</td>
+            <td>{{ chapter.whyFounded }}</td>
+            <td>{{ chapter.whenFounded }}</td>
+            <td>{{ chapter.progenitor }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

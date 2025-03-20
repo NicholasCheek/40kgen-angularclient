@@ -1,0 +1,217 @@
+<div class="card my-5">
+  <div class="card-body">
+    <button type="button" class="btn btn-primary mb-3" (click)="generateAllRandomFields()">Generate All Random Fields</button>
+    <form (ngSubmit)="onSubmit()" #planetForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="planet.name" class="form-control" id="name" name="name" placeholder="Enter planet name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="segmentum">Segmentum</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.segmentum" class="form-control" id="segmentum" name="segmentum" placeholder="Enter segmentum" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['segmentum'], 'btn-danger': lockedFields['segmentum']}" (click)="toggleLock('segmentum')">
+              {{ lockedFields['segmentum'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="pClass">Planet Class</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.pClass" class="form-control" id="pClass" name="pClass" placeholder="Enter planet class" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['pClass'], 'btn-danger': lockedFields['pClass']}" (click)="toggleLock('pClass')">
+              {{ lockedFields['pClass'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="techLevel">Technology Level</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.techLevel" class="form-control" id="techLevel" name="techLevel" placeholder="Enter technology level" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['techLevel'], 'btn-danger': lockedFields['techLevel']}" (click)="toggleLock('techLevel')">
+              {{ lockedFields['techLevel'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="starSize">Star Size</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.starSize" class="form-control" id="starSize" name="starSize" placeholder="Enter star size" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['starSize'], 'btn-danger': lockedFields['starSize']}" (click)="toggleLock('starSize')">
+              {{ lockedFields['starSize'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="planetSize">Planet Size</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.planetSize" class="form-control" id="planetSize" name="planetSize" placeholder="Enter planet size" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['planetSize'], 'btn-danger': lockedFields['planetSize']}" (click)="toggleLock('planetSize')">
+              {{ lockedFields['planetSize'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="axialTilt">Axial Tilt</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.axialTilt" class="form-control" id="axialTilt" name="axialTilt" placeholder="Enter axial tilt" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['axialTilt'], 'btn-danger': lockedFields['axialTilt']}" (click)="toggleLock('axialTilt')">
+              {{ lockedFields['axialTilt'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dayLength">Length of Day</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.dayLength" class="form-control" id="dayLength" name="dayLength" placeholder="Enter day length" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['dayLength'], 'btn-danger': lockedFields['dayLength']}" (click)="toggleLock('dayLength')">
+              {{ lockedFields['dayLength'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="yearLength">Length of Year</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.yearLength" class="form-control" id="yearLength" name="yearLength" placeholder="Enter year Length" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['yearLength'], 'btn-danger': lockedFields['yearLength']}" (click)="toggleLock('yearLength')">
+              {{ lockedFields['yearLength'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="numSatellites">Number of Satellites / Moons</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.numSatellites" class="form-control" id="numSatellites" name="numSatellites" placeholder="EnterNumber of Satellites / Moons" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['numSatellites'], 'btn-danger': lockedFields['numSatellites']}" (click)="toggleLock('numSatellites')">
+              {{ lockedFields['numSatellites'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="gravity">Gravity</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.gravity" class="form-control" id="gravity" name="gravity" placeholder="Enter Gravity" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['gravity'], 'btn-danger': lockedFields['gravity']}" (click)="toggleLock('gravity')">
+              {{ lockedFields['gravity'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="atmosphere">Atmosphere</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.atmosphere" class="form-control" id="atmosphere" name="atmosphere" placeholder="Enter Atmosphere" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['atmosphere'], 'btn-danger': lockedFields['atmosphere']}" (click)="toggleLock('atmosphere')">
+              {{ lockedFields['atmosphere'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="hydrosphere">Hydrosphere</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.hydrosphere" class="form-control" id="hydrosphere" name="hydrosphere" placeholder="Enter Hydrosphere" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['hydrosphere'], 'btn-danger': lockedFields['hydrosphere']}" (click)="toggleLock('hydrosphere')">
+              {{ lockedFields['hydrosphere'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="temperature">Temperature</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.temperature" class="form-control" id="temperature" name="temperature" placeholder="Enter temperature" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['temperature'], 'btn-danger': lockedFields['temperature']}" (click)="toggleLock('temperature')">
+              {{ lockedFields['temperature'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="terrains">Terrains</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.terrains" class="form-control" id="terrains" name="terrains" placeholder="Enter terrains" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['terrains'], 'btn-danger': lockedFields['terrains']}" (click)="toggleLock('terrains')">
+              {{ lockedFields['terrains'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="population">Population</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.population" class="form-control" id="population" name="population" placeholder="Enter Population" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['population'], 'btn-danger': lockedFields['population']}" (click)="toggleLock('population')">
+              {{ lockedFields['population'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="society">Society</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.society" class="form-control" id="society" name="society" placeholder="Enter Society" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['society'], 'btn-danger': lockedFields['society']}" (click)="toggleLock('society')">
+              {{ lockedFields['society'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="defences">Defences</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="planet.defences" class="form-control" id="defences" name="defences" placeholder="Enter defences" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['defences'], 'btn-danger': lockedFields['defences']}" (click)="toggleLock('defences')">
+              {{ lockedFields['defences'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="!planetForm.form.valid" class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>
