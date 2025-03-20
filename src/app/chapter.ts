@@ -8,4 +8,5 @@ export class Chapter {
     demeanour!: string;
     figureOfLegend!: string;
     deedsOfLegend!: string;
+    beliefs!: string;
 }

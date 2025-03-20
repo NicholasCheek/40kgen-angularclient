@@ -18,16 +18,11 @@ export class ChapterFormComponent implements OnInit {
     gsPurity: '',
     demeanour: '',
     figureOfLegend: '',
-    deedsOfLegend: ''
+    deedsOfLegend: '',
+    beliefs: ''
   };
 
-  whyFoundedOptions: string[] = [];
-  whenFoundedOptions: string[] = [];
-  progenitorOptions: string[] = [];
-  gsPurityOptions: string[] = [];
-  demeanourOptions: string[] = [];
-  figureOfLegendOptions: string[] = [];
-  deedsOfLegendOptions: string[] = [];
+  lockedFields: { [key: string]: boolean } = {};
 
   constructor(
       private route: ActivatedRoute, 
@@ -36,63 +31,41 @@ export class ChapterFormComponent implements OnInit {
       this.chapter = new Chapter();
     }
 
-  ngOnInit(): void {
-    this.chapterService.getWhyFoundedOptions().subscribe(data => this.whyFoundedOptions = data);
-    this.chapterService.getWhenFoundedOptions().subscribe(data => this.whenFoundedOptions = data);
-    this.chapterService.getProgenitorOptions().subscribe(data => this.progenitorOptions = data);
-    this.chapterService.getGsPurityOptions().subscribe(data => this.gsPurityOptions = data);
-    this.chapterService.getDemeanourOptions().subscribe(data => this.demeanourOptions = data);
-    this.chapterService.getFigureOptions().subscribe(data => this.figureOfLegendOptions = data);
-    this.chapterService.getDeedsOptions().subscribe(data => this.deedsOfLegendOptions = data);
+  ngOnInit(): void {}
+
+  toggleLock(field: string): void {
+    this.lockedFields[field] = !this.lockedFields[field];
   }
 
-  fetchRandomWhyFounded(): void {
-    this.chapterService.getRandomWhyFounded()
-      .subscribe(response => {
-        this.chapter.whyFounded = response;
-      });
+  fetchRandomValue(field: string, serviceMethod: () => any): void {
+    if (this.lockedFields[field]) {
+      console.log(`Field ${field} is locked, skipping...`);
+      return;
+    }
+
+    console.log(`Fetching random value for ${field}...`);
+    serviceMethod().subscribe({
+      next: (response: { result: any }) => {
+        console.log(`API Response for ${field}:`, response);
+        this.chapter[field] = response.result ?? response;
+      },
+      error: (err: any) => {
+        console.error(`Error fetching ${field}:`, err);
+      }
+    });
   }
 
-  fetchRandomWhenFounded(): void {
-    this.chapterService.getRandomWhenFounded()
-      .subscribe(response => {
-        this.chapter.whenFounded = response;
-      });
-  }
-
-  fetchRandomProgenitor(): void {
-    this.chapterService.getRandomProgenitor()
-      .subscribe(response => {
-        this.chapter.progenitor = response;
-      });
-  }
-
-  fetchRandomGsPurity(): void {
-    this.chapterService.getRandomGsPurity()
-      .subscribe(response => {
-        this.chapter.gsPurity = response;
-      });
-  }
-
-  fetchRandomDemeanour(): void {
-    this.chapterService.getRandomDemeanour()
-      .subscribe(response => {
-        this.chapter.demeanour = response;
-      });
-  }
-
-  fetchRandomFigure(): void {
-    this.chapterService.getRandomFigure()
-      .subscribe(response => {
-        this.chapter.figureOfLegend = response;
-      });
-  }
-
-  fetchRandomDeeds(): void {
-    this.chapterService.getRandomDeeds()
-      .subscribe(response => {
-        this.chapter.deedsOfLegend = response;
-      });
+  generateAllRandomFields(): void {
+    console.log('Generating random chapter attributes...');
+    
+    this.fetchRandomValue('whyFounded', () => this.chapterService.getRandomWhyFounded());
+    this.fetchRandomValue('whenFounded', () => this.chapterService.getRandomWhenFounded());
+    this.fetchRandomValue('progenitor', () => this.chapterService.getRandomProgenitor());
+    this.fetchRandomValue('gsPurity', () => this.chapterService.getRandomGsPurity());
+    this.fetchRandomValue('demeanour', () => this.chapterService.getRandomDemeanour());
+    this.fetchRandomValue('figureOfLegend', () => this.chapterService.getRandomFigure());
+    this.fetchRandomValue('deedsOfLegend', () => this.chapterService.getRandomDeeds());
+    this.fetchRandomValue('beliefs', () => this.chapterService.getRandomBeliefs());
   }
 
   onSubmit() {

@@ -1,5 +1,6 @@
 <div class="card my-5">
   <div class="card-body">
+    <button type="button" class="btn btn-primary mb-3" (click)="generateAllRandomFields()">Generate All Random Fields</button>
     <form (ngSubmit)="onSubmit()" #chapterForm="ngForm">
       <div class="form-group">
         <label for="name">Name</label>
@@ -7,59 +8,99 @@
       </div>
 
       <div class="form-group">
-        <label for="whyFounded">Why Founded</label>
-        <input type="text" [(ngModel)]="chapter.whyFounded" class="form-control" id="whyFounded" name="whyFounded" placeholder="Enter why founded" required>
-        <div class="input-group-append">
-            <button type="button" class="btn btn-warning" (click)="fetchRandomWhyFounded()">Randomize</button>
+        <label for="whyFounded">whyFounded</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="chapter.whyFounded" class="form-control" id="whyFounded" name="whyFounded" placeholder="Enter whyFounded" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['whyFounded'], 'btn-danger': lockedFields['whyFounded']}" (click)="toggleLock('whyFounded')">
+              {{ lockedFields['whyFounded'] ? '🔒' : '🔓' }}
+            </button>
           </div>
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="whenFounded">When Founded</label>
-        <input type="text" [(ngModel)]="chapter.whenFounded" class="form-control" id="whenFounded" name="whenFounded" placeholder="Enter when founded" required>
-        <div class="input-group-append">
-            <button type="button" class="btn btn-warning" (click)="fetchRandomWhenFounded()">Randomize</button>
+        <label for="whenFounded">whenFounded</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="chapter.whenFounded" class="form-control" id="whenFounded" name="whenFounded" placeholder="Enter whenFounded" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['whenFounded'], 'btn-danger': lockedFields['whenFounded']}" (click)="toggleLock('whenFounded')">
+              {{ lockedFields['whenFounded'] ? '🔒' : '🔓' }}
+            </button>
           </div>
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="progenitor">Progenitor</label>
-        <input type="text" [(ngModel)]="chapter.progenitor" class="form-control" id="progenitor" name="progenitor" placeholder="Enter progenitor" required>
-        <div class="input-group-append">
-            <button type="button" class="btn btn-warning" (click)="fetchRandomProgenitor()">Randomize</button>
+        <label for="progenitor">progenitor</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="chapter.progenitor" class="form-control" id="progenitor" name="progenitor" placeholder="Enter progenitor" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['progenitor'], 'btn-danger': lockedFields['progenitor']}" (click)="toggleLock('progenitor')">
+              {{ lockedFields['progenitor'] ? '🔒' : '🔓' }}
+            </button>
           </div>
+        </div>
       </div>
 
       <div class="form-group">
         <label for="gsPurity">Gene Seed Purity</label>
-        <input type="text" [(ngModel)]="chapter.gsPurity" class="form-control" id="gsPurity" name="gsPurity" placeholder="Enter Gene Seed Purity" required>
-        <div class="input-group-append">
-            <button type="button" class="btn btn-warning" (click)="fetchRandomGsPurity()">Randomize</button>
+        <div class="input-group">
+          <textarea [(ngModel)]="chapter.gsPurity" class="form-control" id="gsPurity" name="gsPurity" placeholder="Enter Gene Seed Purity" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['gsPurity'], 'btn-danger': lockedFields['gsPurity']}" (click)="toggleLock('gsPurity')">
+              {{ lockedFields['gsPurity'] ? '🔒' : '🔓' }}
+            </button>
           </div>
+        </div>
       </div>
 
       <div class="form-group">
         <label for="demeanour">Demeanour</label>
-        <input type="text" [(ngModel)]="chapter.demeanour" class="form-control" id="demeanour" name="demeanour" placeholder="Enter Demeanour" required>
-        <div class="input-group-append">
-            <button type="button" class="btn btn-warning" (click)="fetchRandomDemeanour()">Randomize</button>
+        <div class="input-group">
+          <textarea [(ngModel)]="chapter.demeanour" class="form-control" id="demeanour" name="demeanour" placeholder="Enter demeanour" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['demeanour'], 'btn-danger': lockedFields['demeanour']}" (click)="toggleLock('demeanour')">
+              {{ lockedFields['demeanour'] ? '🔒' : '🔓' }}
+            </button>
           </div>
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="figureOfLegend">Figure of Legend</label>
-        <input type="text" [(ngModel)]="chapter.figureOfLegend" class="form-control" id="figureOfLegend" name="figureOfLegend" placeholder="Enter Figure of Legend" required>
-        <div class="input-group-append">
-            <button type="button" class="btn btn-warning" (click)="fetchRandomFigure()">Randomize</button>
+        <label for="figureOfLegend">figureOfLegend</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="chapter.figureOfLegend" class="form-control" id="figureOfLegend" name="figureOfLegend" placeholder="Enter figureOfLegend" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['figureOfLegend'], 'btn-danger': lockedFields['figureOfLegend']}" (click)="toggleLock('figureOfLegend')">
+              {{ lockedFields['figureOfLegend'] ? '🔒' : '🔓' }}
+            </button>
           </div>
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="deedsOfLegend">Deeds of Legend</label>
-        <input type="text" [(ngModel)]="chapter.deedsOfLegend" class="form-control" id="deedsOfLegend" name="deedsOfLegend" placeholder="Enter Deeds of Legend" required>
-        <div class="input-group-append">
-            <button type="button" class="btn btn-warning" (click)="fetchRandomDeeds()">Randomize</button>
+        <label for="deedsOfLegend">deedsOfLegend</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="chapter.deedsOfLegend" class="form-control" id="deedsOfLegend" name="deedsOfLegend" placeholder="Enter deedsOfLegend" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['deedsOfLegend'], 'btn-danger': lockedFields['deedsOfLegend']}" (click)="toggleLock('deedsOfLegend')">
+              {{ lockedFields['deedsOfLegend'] ? '🔒' : '🔓' }}
+            </button>
           </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="beliefs">beliefs</label>
+        <div class="input-group">
+          <textarea [(ngModel)]="chapter.beliefs" class="form-control" id="beliefs" name="beliefs" placeholder="Enter beliefs" readonly></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['beliefs'], 'btn-danger': lockedFields['beliefs']}" (click)="toggleLock('beliefs')">
+              {{ lockedFields['beliefs'] ? '🔒' : '🔓' }}
+            </button>
+          </div>
+        </div>
       </div>
 
       <button type="submit" [disabled]="!chapterForm.form.valid" class="btn btn-info">Submit</button>

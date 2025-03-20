@@ -19,34 +19,6 @@ export class ChapterService {
       return this.http.post<Chapter>(this.apiUrl, chapter);
   }
 
-  getWhyFoundedOptions(): Observable<string[]> {
-    return this.http.get<string[]>(`${this.apiUrl}/why-founded-options`);
-  }
-
-  getWhenFoundedOptions(): Observable<string[]> {
-    return this.http.get<string[]>(`${this.apiUrl}/when-founded-options`);
-  }
-
-  getProgenitorOptions(): Observable<string[]> {
-    return this.http.get<string[]>(`${this.apiUrl}/progenitor-options`);
-  }
-
-  getGsPurityOptions(): Observable<string[]> {
-    return this.http.get<string[]>(`${this.apiUrl}/gspurity-options`);
-  }
-
-  getDemeanourOptions(): Observable<string[]> {
-    return this.http.get<string[]>(`${this.apiUrl}/demeanour-options`);
-  }
-
-  getFigureOptions(): Observable<string[]> {
-    return this.http.get<string[]>(`${this.apiUrl}/figure-options`);
-  }
-
-  getDeedsOptions(): Observable<string[]> {
-    return this.http.get<string[]>(`${this.apiUrl}/deeds-options`);
-  }
-
   getRandomWhyFounded(): Observable<string> {
     return this.http.get<{ value: string }>(`${this.apiUrl}/random-why-founded`, { responseType: 'json' })
       .pipe(
@@ -91,6 +63,13 @@ export class ChapterService {
 
   getRandomDeeds(): Observable<string> {
     return this.http.get<{ value: string }>(`${this.apiUrl}/random-deeds`, { responseType: 'json' })
+      .pipe(
+        map((response: { value: any; }) => response.value)
+      );
+  }
+
+  getRandomBeliefs(): Observable<string> {
+    return this.http.get<{ value: string }>(`${this.apiUrl}/random-beliefs`, { responseType: 'json' })
       .pipe(
         map((response: { value: any; }) => response.value)
       );
