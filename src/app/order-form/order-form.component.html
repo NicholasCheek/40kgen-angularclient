@@ -1,0 +1,160 @@
+<div class="card my-5">
+    <div class="card-body">
+      <button type="button" class="btn btn-primary mb-3" (click)="generateAllRandomFields()">Generate All Random Fields</button>
+      <form (ngSubmit)="onSubmit()" #orderForm="ngForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" [(ngModel)]="order.name" class="form-control" id="name" name="name" placeholder="Enter chapter name" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="originator">originator</label>
+          <div class="input-group">
+            <textarea [(ngModel)]="order.originator" class="form-control" id="originator" name="originator" placeholder="Enter originator" readonly></textarea>
+            <div class="input-group-append">
+              <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['originator'], 'btn-danger': lockedFields['originator']}" (click)="toggleLock('originator')">
+                {{ lockedFields['originator'] ? '🔒' : '🔓' }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="founding">founding</label>
+            <div class="input-group">
+              <textarea [(ngModel)]="order.founding" class="form-control" id="founding" name="founding" placeholder="Enter founding" readonly></textarea>
+              <div class="input-group-append">
+                <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['founding'], 'btn-danger': lockedFields['founding']}" (click)="toggleLock('founding')">
+                  {{ lockedFields['founding'] ? '🔒' : '🔓' }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="flaw">flaw</label>
+            <div class="input-group">
+              <textarea [(ngModel)]="order.flaw" class="form-control" id="flaw" name="flaw" placeholder="Enter flaw" readonly></textarea>
+              <div class="input-group-append">
+                <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['flaw'], 'btn-danger': lockedFields['flaw']}" (click)="toggleLock('flaw')">
+                  {{ lockedFields['flaw'] ? '🔒' : '🔓' }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="demeanour">demeanour</label>
+            <div class="input-group">
+              <textarea [(ngModel)]="order.demeanour" class="form-control" id="demeanour" name="demeanour" placeholder="Enter demeanour" readonly></textarea>
+              <div class="input-group-append">
+                <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['demeanour'], 'btn-danger': lockedFields['demeanour']}" (click)="toggleLock('demeanour')">
+                  {{ lockedFields['demeanour'] ? '🔒' : '🔓' }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="primarySaint">primarySaint</label>
+            <div class="input-group">
+              <textarea [(ngModel)]="order.primarySaint" class="form-control" id="primarySaint" name="primarySaint" placeholder="Enter primarySaint" readonly></textarea>
+              <div class="input-group-append">
+                <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['primarySaint'], 'btn-danger': lockedFields['primarySaint']}" (click)="toggleLock('primarySaint')">
+                  {{ lockedFields['primarySaint'] ? '🔒' : '🔓' }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="saintDeeds">saintDeeds</label>
+            <div class="input-group">
+              <textarea [(ngModel)]="order.saintDeeds" class="form-control" id="saintDeeds" name="saintDeeds" placeholder="Enter saintDeeds" readonly></textarea>
+              <div class="input-group-append">
+                <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['saintDeeds'], 'btn-danger': lockedFields['saintDeeds']}" (click)="toggleLock('saintDeeds')">
+                  {{ lockedFields['saintDeeds'] ? '🔒' : '🔓' }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="homeworld">homeworld</label>
+            <div class="input-group">
+              <textarea [(ngModel)]="order.homeworld" class="form-control" id="homeworld" name="homeworld" placeholder="Enter homeworld" readonly></textarea>
+              <div class="input-group-append">
+                <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['homeworld'], 'btn-danger': lockedFields['homeworld']}" (click)="toggleLock('homeworld')">
+                  {{ lockedFields['homeworld'] ? '🔒' : '🔓' }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="strategy">strategy</label>
+            <div class="input-group">
+              <textarea [(ngModel)]="order.strategy" class="form-control" id="strategy" name="strategy" placeholder="Enter strategy" readonly></textarea>
+              <div class="input-group-append">
+                <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['strategy'], 'btn-danger': lockedFields['strategy']}" (click)="toggleLock('strategy')">
+                  {{ lockedFields['strategy'] ? '🔒' : '🔓' }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="methodsOfWorship">methodsOfWorship</label>
+            <div class="input-group">
+              <textarea [(ngModel)]="order.methodsOfWorship" class="form-control" id="methodsOfWorship" name="methodsOfWorship" placeholder="Enter methodsOfWorship" readonly></textarea>
+              <div class="input-group-append">
+                <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['methodsOfWorship'], 'btn-danger': lockedFields['methodsOfWorship']}" (click)="toggleLock('methodsOfWorship')">
+                  {{ lockedFields['methodsOfWorship'] ? '🔒' : '🔓' }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="size">size</label>
+            <div class="input-group">
+              <textarea [(ngModel)]="order.size" class="form-control" id="size" name="size" placeholder="Enter size" readonly></textarea>
+              <div class="input-group-append">
+                <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['size'], 'btn-danger': lockedFields['size']}" (click)="toggleLock('size')">
+                  {{ lockedFields['size'] ? '🔒' : '🔓' }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="allies">allies</label>
+            <div class="input-group">
+              <textarea [(ngModel)]="order.allies" class="form-control" id="allies" name="allies" placeholder="Enter allies" readonly></textarea>
+              <div class="input-group-append">
+                <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['allies'], 'btn-danger': lockedFields['allies']}" (click)="toggleLock('allies')">
+                  {{ lockedFields['allies'] ? '🔒' : '🔓' }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="enemies">enemies</label>
+            <div class="input-group">
+              <textarea [(ngModel)]="order.enemies" class="form-control" id="enemies" name="enemies" placeholder="Enter enemies" readonly></textarea>
+              <div class="input-group-append">
+                <button type="button" class="btn" [ngClass]="{'btn-secondary': !lockedFields['enemies'], 'btn-danger': lockedFields['enemies']}" (click)="toggleLock('enemies')">
+                  {{ lockedFields['enemies'] ? '🔒' : '🔓' }}
+                </button>
+              </div>
+            </div>
+          </div>
+        
+  
+        
+  
+        <button type="submit" [disabled]="!orderForm.form.valid" class="btn btn-info">Submit</button>
+      </form>
+    </div>
+  </div>

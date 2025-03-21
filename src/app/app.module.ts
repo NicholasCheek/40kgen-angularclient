@@ -10,6 +10,9 @@ import { ChapterService } from './chapter.service';
 import { PlanetListComponent } from './planet-list/planet-list.component';
 import { PlanetFormComponent } from './planet-form/planet-form.component';
 import { PlanetService } from './planet.service';
+import { OrderListComponent } from './order-list/order-list.component';
+import { OrderFormComponent } from './order-form/order-form.component';
+import { OrderService } from './order.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { PlanetService } from './planet.service';
     ChapterListComponent,
     ChapterFormComponent,
     PlanetListComponent,
-    PlanetFormComponent
+    PlanetFormComponent,
+    OrderListComponent,
+    OrderFormComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +30,7 @@ import { PlanetService } from './planet.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [ChapterService, PlanetService],
+  providers: [ChapterService, PlanetService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
